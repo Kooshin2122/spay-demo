@@ -11,7 +11,7 @@ export default function App() {
         {/* root */}
         <Root />
         {/* statusBar */}
-        <StatusBar barStyle="dark-content" />
+        <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       </GestureHandlerRootView>
     </>
   );

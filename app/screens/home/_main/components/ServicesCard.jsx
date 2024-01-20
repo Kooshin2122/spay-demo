@@ -19,7 +19,7 @@ const ServicesCard = ({ label, image, sheetRef }) => {
         <Pressable onPress={onClickService} style={styles.container}>
             <View style={styles.imageCon}>
                 <Image
-                    source={img}
+                    source={image}
                     resizeMode="cover"
                     style={{ width: 30, height: 30 }}
                 />
@@ -37,7 +37,7 @@ export default ServicesCard;
 const styles = StyleSheet.create({
     container: {
         rowGap: 5.5,
-        width: "18%",
+        width: "17%",
         alignItems: "center",
     },
     imageCon: {
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 10,
         letterSpacing: 0.5,
-        fontFamily: "poppins600",
+        fontFamily: "poppins500",
         color: COLORS.secondary_color,
         textTransform: "capitalize"
     }

@@ -6,7 +6,7 @@ import { StyleSheet, Platform, SafeAreaView, Text, View, KeyboardAvoidingView, D
 //
 const { height } = Dimensions.get('screen');
 //
-const GorhomBottomSheet = ({ sheetRef, snapPoints, autoSize = true, iosDeviderHeight = 0, androidDeiderHeight = 70, children }) => {
+const GorhomBottomSheet = ({ sheetRef, snapPoints, autoSize = true, iosDeviderHeight = 0, androidDeiderHeight = 0, children }) => {
     // hooks
     const insets = useSafeAreaInsets();
     //
@@ -32,7 +32,7 @@ const GorhomBottomSheet = ({ sheetRef, snapPoints, autoSize = true, iosDeviderHe
                 showsVerticalScrollIndicator={false}
             >
                 {children}
-                <SafeAreaView />
+                {/* <SafeAreaView /> */}
                 <View style={{ height: Platform.OS == "android" ? androidDeiderHeight : iosDeviderHeight }} />
             </BottomSheetScrollView>
         </BottomSheet>

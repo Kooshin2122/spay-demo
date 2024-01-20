@@ -6,18 +6,23 @@ import { COLORS } from '../../theme';
 //
 const OutlinedTextInput = (props) => {
     //
-    const { onChangeText, Left = () => { }, Right = () => { } } = props;
+    const { label, onChangeText, Left = () => { }, Right = () => { } } = props;
     //
     return (
         <View style={styles.container}>
-            <Left />
-            <TextInput
-                {...props}
-                style={styles.input}
-                onChangeText={onChangeText}
-                placeholderTextColor={COLORS.font_secondary}
-            />
-            <Right />
+            <Text style={[SIZES.text_base, { color: COLORS.primary_color, fontFamily: "poppins400" }]}>
+                {label}
+            </Text>
+            <View style={styles.inputCon}>
+                <Left />
+                <TextInput
+                    {...props}
+                    style={styles.input}
+                    onChangeText={onChangeText}
+                    placeholderTextColor={COLORS.font_secondary}
+                />
+                <Right />
+            </View>
         </View>
     );
     //
@@ -25,9 +30,13 @@ const OutlinedTextInput = (props) => {
 //
 const styles = StyleSheet.create({
     container: {
+        rowGap: 3,
+        // marginTop: 10,
+    },
+    inputCon: {
         columnGap: 10,
         borderRadius: 5,
-        marginVertical: 10,
+        marginBottom: 10,
         flexDirection: "row",
         alignItems: "center",
         borderBottomWidth: 0.7,

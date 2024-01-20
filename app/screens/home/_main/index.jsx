@@ -2,12 +2,14 @@
 import React, { useRef } from 'react';
 import { COLORS } from '../../../theme';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
-import { AccountCard, DepositSheet, HomeHeader, SendAgainCard, ServicesCard } from './components';
+import { AccountCard, DepositSheet, HomeHeader, SendAgainCard, SendMoneySheet, ServicesCard } from './components';
 import { Box, GorhomBottomSheet, ListHeader, TransactionsCard } from '../../../components';
+import { send, deposit, withdrawal, bills, remittance, loan, bitcoin, needs } from '../../../assets';
 //
 const HomeScreen = () => {
     //
     const depositSheet = useRef();
+    const sendMoneySheet = useRef();
     //
     return (
         <SafeAreaView style={styles.mainCon}>
@@ -17,22 +19,48 @@ const HomeScreen = () => {
             <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
                 <View style={styles.scrollCon}>
                     {/* your account  */}
-                    {/* <ListHeader
-                    title="your account"
-                    textButton="Add Account"
-                />
-                <AccountCard /> */}
+                    <ListHeader
+                        title="your account"
+                        textButton="Add Account"
+                    />
+                    <AccountCard />
                     {/* services */}
                     <ListHeader title="What would you like to do ?" />
                     <View style={styles.servicesCon}>
-                        <ServicesCard label="deposit" sheetRef={depositSheet} />
-                        <ServicesCard label="send money" />
-                        <ServicesCard label="statements" />
-                        <ServicesCard label="pay bills" />
-                        <ServicesCard label="remittance" />
-                        <ServicesCard label="loan" />
-                        <ServicesCard label="crypto" />
-                        <ServicesCard label="life style" />
+                        <ServicesCard
+                            label="deposit"
+                            image={deposit}
+                            sheetRef={depositSheet}
+                        />
+                        <ServicesCard
+                            image={send}
+                            label="send"
+                            sheetRef={sendMoneySheet}
+                        />
+                        <ServicesCard
+                            label="Withdraw"
+                            image={withdrawal}
+                        />
+                        <ServicesCard
+                            label="pay bills"
+                            image={bills}
+                        />
+                        <ServicesCard
+                            label="remittance"
+                            image={remittance}
+                        />
+                        <ServicesCard
+                            label="loan"
+                            image={loan}
+                        />
+                        <ServicesCard
+                            label="crypto"
+                            image={bitcoin}
+                        />
+                        <ServicesCard
+                            label="life style"
+                            image={needs}
+                        />
                     </View>
                     {/* send again */}
                     <View style={styles.servicesCon}>
@@ -89,6 +117,10 @@ const HomeScreen = () => {
             <GorhomBottomSheet sheetRef={depositSheet} >
                 <DepositSheet sheetRef={depositSheet} />
             </GorhomBottomSheet>
+            {/* Send Money Bottom Sheet */}
+            <GorhomBottomSheet sheetRef={sendMoneySheet} >
+                <SendMoneySheet sheetRef={sendMoneySheet} />
+            </GorhomBottomSheet>
         </SafeAreaView>
     );
     //
@@ -113,10 +145,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: '2.5%',
     },
     servicesCon: {
-        gap: 8,
+        gap: 12,
         flexWrap: "wrap",
         flexDirection: "row",
         alignItems: "flex-start",
+        justifyContent: "center"
     },
     sendAgainCardCon: {
         flex: 1,

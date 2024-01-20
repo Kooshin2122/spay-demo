@@ -16,7 +16,7 @@ export default AccountCard;
 //
 const styles = StyleSheet.create({
     container: {
-        flex: 0.4,
+        height: 200,
         borderRadius: 10,
         backgroundColor: "#012b5b"
     }
