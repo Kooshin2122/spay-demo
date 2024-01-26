@@ -1,14 +1,15 @@
 //
 import React, { useRef } from 'react';
 import { COLORS } from '../../../theme';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
-import { AccountCard, DepositSheet, HomeHeader, SendAgainCard, SendMoneySheet, ServicesCard } from './components';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image } from 'react-native';
 import { Box, GorhomBottomSheet, ListHeader, TransactionsCard } from '../../../components';
 import { send, deposit, withdrawal, bills, remittance, loan, bitcoin, needs } from '../../../assets';
+import { AccountCard, DepositSheet, HomeHeader, ImageCarousel, SendAgainCard, SendMoneySheet, ServicesCard, WithdrawSheet } from './components';
 //
 const HomeScreen = () => {
     //
     const depositSheet = useRef();
+    const withdrawSheet = useRef();
     const sendMoneySheet = useRef();
     //
     return (
@@ -40,6 +41,7 @@ const HomeScreen = () => {
                         <ServicesCard
                             label="Withdraw"
                             image={withdrawal}
+                            sheetRef={withdrawSheet}
                         />
                         <ServicesCard
                             label="pay bills"
@@ -49,18 +51,10 @@ const HomeScreen = () => {
                             label="remittance"
                             image={remittance}
                         />
-                        <ServicesCard
-                            label="loan"
-                            image={loan}
-                        />
-                        <ServicesCard
-                            label="crypto"
-                            image={bitcoin}
-                        />
-                        <ServicesCard
-                            label="life style"
-                            image={needs}
-                        />
+                    </View>
+                    {/* Carousel */}
+                    <View style={{ width: '100%' }}>
+                        <ImageCarousel />
                     </View>
                     {/* send again */}
                     <View style={styles.servicesCon}>
@@ -120,6 +114,10 @@ const HomeScreen = () => {
             {/* Send Money Bottom Sheet */}
             <GorhomBottomSheet sheetRef={sendMoneySheet} >
                 <SendMoneySheet sheetRef={sendMoneySheet} />
+            </GorhomBottomSheet>
+            {/* Withdraw Bottom Sheet */}
+            <GorhomBottomSheet sheetRef={withdrawSheet} >
+                <WithdrawSheet sheetRef={withdrawSheet} />
             </GorhomBottomSheet>
         </SafeAreaView>
     );

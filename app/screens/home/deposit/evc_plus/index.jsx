@@ -11,7 +11,7 @@ import { POST_AUTH_RAW_DATA } from '../../../../API';
 //
 const Evc = ({ route }) => {
     //
-    const [modal, setModal] = useState(false)
+    const [modal, setModal] = useState(false);
     const [response, setResponse] = useState({
         data: null,
         loading: false,

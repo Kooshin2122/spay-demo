@@ -1,6 +1,7 @@
 //
 import React from 'react';
 import BotomTabs from '../screens';
+import AuthStack from '../screens/auth';
 import { NavigationContainer } from '@react-navigation/native';
 import { useFonts, Poppins_300Light, Poppins_100Thin, Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold, Poppins_700Bold, Poppins_800ExtraBold, Poppins_900Black } from '@expo-google-fonts/poppins';
 //
@@ -21,6 +22,7 @@ const Root = () => {
     //
     return (
         <NavigationContainer>
+            {/* <AuthStack /> */}
             <BotomTabs />
         </NavigationContainer>
     )

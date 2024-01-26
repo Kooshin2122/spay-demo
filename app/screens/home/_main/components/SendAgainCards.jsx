@@ -16,7 +16,7 @@ const SendAgainCard = ({ isProfile = false, image = "https://images.unsplash.com
                         <Image
                             resizeMode="cover"
                             source={{ uri: image }}
-                            style={{ width: "100%", height: "100%", borderWidth: 2, borderRadius: 10, borderColor: COLORS.tertiary_color }}
+                            style={{ width: "100%", height: "100%", borderRadius: 10, }}
                         />
                     </View>
                     :
@@ -37,8 +37,8 @@ export default SendAgainCard;
 //
 const styles = StyleSheet.create({
     container: {
-        width: 75,
-        height: 75,
+        width: 65,
+        height: 65,
         borderRadius: 10,
         backgroundColor: '#f4e4cd'
     },

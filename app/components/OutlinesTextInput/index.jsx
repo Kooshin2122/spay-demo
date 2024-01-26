@@ -10,7 +10,7 @@ const OutlinedTextInput = (props) => {
     //
     return (
         <View style={styles.container}>
-            <Text style={[SIZES.text_base, { color: COLORS.primary_color, fontFamily: "poppins400" }]}>
+            <Text style={[SIZES.text_base, { color: COLORS.font_primary, fontFamily: "poppins400" }]}>
                 {label}
             </Text>
             <View style={styles.inputCon}>
@@ -30,25 +30,23 @@ const OutlinedTextInput = (props) => {
 //
 const styles = StyleSheet.create({
     container: {
-        rowGap: 3,
-        // marginTop: 10,
+        rowGap: 1,
     },
     inputCon: {
         columnGap: 10,
         borderRadius: 5,
-        marginBottom: 10,
         flexDirection: "row",
         alignItems: "center",
         borderBottomWidth: 0.7,
-        borderColor: COLORS.primary_color,
+        borderColor: COLORS.gray_color,
     },
     input: {
         flex: 1,
-        height: 40,
-        fontSize: 16,
-        letterSpacing: 0.5,
+        height: 35,
+        fontSize: 14,
+        letterSpacing: 0.6,
         fontFamily: "poppins400",
-        color: COLORS.primary_color,
+        color: COLORS.font_primary,
     },
 });
 //

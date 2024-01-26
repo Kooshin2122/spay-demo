@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         rowGap: 20,
         alignItems: "center",
         justifyContent: "flex-end",
-        backgroundColor: "rgba(68, 68, 68, 0.6)"
+        backgroundColor: "rgba(31, 25, 25, 0.65)"
     },
     modalView: {
         width: "95%",
@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
         width: "95%",
         padding: "3%",
         borderRadius: 7,
+        marginBottom: "10%",
         backgroundColor: "#ffffff"
     },
     cancelBtn: {
