@@ -1,7 +1,9 @@
 //
-import DepositHeader from './DepositHeader';
+import Header from './Header';
+import WithdrawInput from './WithdrawInput';
 //
 export {
-    DepositHeader,
+    Header,
+    WithdrawInput,
 };
 //

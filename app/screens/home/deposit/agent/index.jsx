@@ -3,10 +3,13 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import { COLORS } from '../../../../theme';
 import { WithdrawInput } from '../components';
-import { CustomBtn, ResponseModal } from '../../../../components';
 import { KeyboardAvoidingView, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import OutlinedTextInput from '../../../../components/OutlinesTextInput';
+import { SIZES } from '../../../../constants';
+import CustomBtn from '../../../../components/CustomBtn';
+import { ResponseModal } from '../../../../components';
 //
-const Paypal = ({ route }) => {
+const Agent = ({ route }) => {
     //
     const data = route?.params;
     const [amount, setAmount] = useState('');
@@ -48,7 +51,7 @@ const Paypal = ({ route }) => {
                             setAmount={setAmount}
                         />
                         <CustomBtn
-                            title="Paypal"
+                            title="Debit / Credit"
                             activeIndicator={response?.loading}
                             onClickHandler={onPay}
                             style={{ marginTop: '15%', marginHorizontal: "5%" }}
@@ -58,19 +61,14 @@ const Paypal = ({ route }) => {
             </KeyboardAvoidingView>
         </SafeAreaView>
     );
-    //
 }
 //
-export default Paypal;
+export default Agent;
 //
 const styles = StyleSheet.create({
     conatainer: {
         flex: 1,
         backgroundColor: COLORS.bg_primary
-    },
-    transactionsCardCon: {
-        rowGap: 10,
-        paddingHorizontal: "3%"
     },
 });
 //

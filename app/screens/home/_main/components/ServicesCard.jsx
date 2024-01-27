@@ -7,11 +7,12 @@ import { Dimensions, Image, Pressable, StyleSheet, Text, View } from 'react-nati
 //
 const { width } = Dimensions.get('screen');
 //
-const ServicesCard = ({ label, image, sheetRef }) => {
+const ServicesCard = ({ label, image, sheetRef, onNavigate = () => { } }) => {
     //
     const { navigate } = useNavigation();
     //
     const onClickService = () => {
+        onNavigate();
         sheetRef?.current?.expand();
     }
     //

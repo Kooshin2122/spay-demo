@@ -3,14 +3,21 @@ import React from 'react';
 import { COLORS } from '../../theme';
 import { StyleSheet, Text, View } from 'react-native';
 //
-const ListHeader = ({ title = "Title", textButton = null, children, containerStyle, childredConStyle = {}, onClickTextButton = () => { } }) => {
+const ListHeader = ({ title = "Title", textButton = null, Element = () => { }, containerStyle, childredConStyle = {}, onClickTextButton = () => { } }) => {
     //
     return (
         <View style={[styles.container, containerStyle]}>
             <Text style={styles.title}>
                 {title}
             </Text>
-            {textButton && <Text onPress={onClickTextButton} style={styles.textButton}>{textButton}</Text>}
+            {
+                textButton
+                    ?
+                    <Text onPress={onClickTextButton} style={styles.textButton}>
+                        {textButton}
+                    </Text> :
+                    <Element />
+            }
         </View>
     )
     //
@@ -29,13 +36,13 @@ const styles = StyleSheet.create({
         fontSize: 14,
         letterSpacing: 0.5,
         fontFamily: "poppins500",
-        color: COLORS.font_primary,
+        color: COLORS.font_secondary,
     },
     textButton: {
         fontSize: 14,
         letterSpacing: 0.5,
         fontFamily: "poppins500",
-        color: COLORS.primary_color
+        color: COLORS.font_primary
     },
 })
 //

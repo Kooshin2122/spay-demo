@@ -1,6 +1,7 @@
 //
 import React, { useRef } from 'react';
 import { COLORS } from '../../../theme';
+import { useNavigation } from '@react-navigation/core';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image } from 'react-native';
 import { Box, GorhomBottomSheet, ListHeader, TransactionsCard } from '../../../components';
 import { send, deposit, withdrawal, bills, remittance, loan, bitcoin, needs } from '../../../assets';
@@ -11,6 +12,7 @@ const HomeScreen = () => {
     const depositSheet = useRef();
     const withdrawSheet = useRef();
     const sendMoneySheet = useRef();
+    const { navigate } = useNavigation();
     //
     return (
         <SafeAreaView style={styles.mainCon}>
@@ -20,44 +22,44 @@ const HomeScreen = () => {
             <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
                 <View style={styles.scrollCon}>
                     {/* your account  */}
-                    <ListHeader
-                        title="your account"
-                        textButton="Add Account"
-                    />
-                    <AccountCard />
+                    <Box>
+                        <ListHeader
+                            title="your account"
+                            textButton="Add Account"
+                        />
+                        <AccountCard />
+                    </Box>
                     {/* services */}
-                    <ListHeader title="What would you like to do ?" />
-                    <View style={styles.servicesCon}>
-                        <ServicesCard
-                            label="deposit"
-                            image={deposit}
-                            sheetRef={depositSheet}
-                        />
-                        <ServicesCard
-                            image={send}
-                            label="send"
-                            sheetRef={sendMoneySheet}
-                        />
-                        <ServicesCard
-                            label="Withdraw"
-                            image={withdrawal}
-                            sheetRef={withdrawSheet}
-                        />
-                        <ServicesCard
-                            label="pay bills"
-                            image={bills}
-                        />
-                        <ServicesCard
-                            label="remittance"
-                            image={remittance}
-                        />
-                    </View>
+                    <Box>
+                        <ListHeader title="What would you like to do ?" />
+                        <View style={styles.servicesCon}>
+                            <ServicesCard
+                                label="deposit"
+                                image={deposit}
+                                sheetRef={depositSheet}
+                            />
+                            <ServicesCard
+                                image={send}
+                                label="Transfer"
+                                onNavigate={() => navigate('TransferMoney')}
+                            />
+                            <ServicesCard
+                                label="Withdraw"
+                                image={withdrawal}
+                                sheetRef={withdrawSheet}
+                            />
+                            <ServicesCard
+                                image={bills}
+                                label="pay bills"
+                            />
+                        </View>
+                    </Box>
                     {/* Carousel */}
-                    <View style={{ width: '100%' }}>
+                    <Box style={{ width: '100%' }}>
                         <ImageCarousel />
-                    </View>
+                    </Box>
                     {/* send again */}
-                    <View style={styles.servicesCon}>
+                    <Box>
                         <ListHeader
                             title="Send again"
                             textButton="see more"
@@ -84,9 +86,9 @@ const HomeScreen = () => {
                                 image="https://i.pinimg.com/736x/46/d6/38/46d638b0018a29d734eac03973536c68.jpg"
                             />
                         </ScrollView>
-                    </View>
+                    </Box>
                     {/* recent transactions */}
-                    <View style={styles.transactionsCardCon}>
+                    <Box>
                         <ListHeader
                             title="Recent transactions"
                             textButton="see more"
@@ -103,7 +105,7 @@ const HomeScreen = () => {
                         <TransactionsCard
                             status="income"
                         />
-                    </View>
+                    </Box>
                 </View>
                 {/* end */}
             </ScrollView>
@@ -138,16 +140,15 @@ const styles = StyleSheet.create({
     },
     scrollCon: {
         flex: 1,
-        rowGap: 10,
+        rowGap: 18,
         paddingBottom: "5%",
         paddingHorizontal: '2.5%',
     },
     servicesCon: {
-        gap: 12,
         flexWrap: "wrap",
         flexDirection: "row",
         alignItems: "flex-start",
-        justifyContent: "center"
+        justifyContent: "space-around"
     },
     sendAgainCardCon: {
         flex: 1,

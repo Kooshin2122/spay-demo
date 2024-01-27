@@ -40,7 +40,7 @@ const WithdrawSheet = ({ sheetRef }) => {
                     name="Agent"
                     screenName="Agent"
                     desc="Use your master or visa card to withdraw"
-                    image="https://cdn3.vectorstock.com/i/1000x1000/88/22/qr-code-sample-for-smartphone-scanning-vector-12578822.jpg"
+                    image="https://cdn-icons-png.flaticon.com/512/6963/6963703.png"
                 />
             </View>
         </View>

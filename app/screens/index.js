@@ -10,6 +10,7 @@ import HomeStack from './home';
 import CardsStack from './Cards';
 import HistoryStack from './history';
 import ContactsStack from './Contacts';
+import AccountSettingStack from './settings';
 //
 const Tab = createBottomTabNavigator();
 //
@@ -54,10 +55,10 @@ const BotomTabs = () => {
                     ),
                 }}
             />
-            <Tab.Screen name="ContactsStack" component={ContactsStack}
+            <Tab.Screen name="AccountSettingStack" component={AccountSettingStack}
                 options={{
                     // tabBarBadge: 1,
-                    tabBarLabel: 'Contacts',
+                    tabBarLabel: 'Seetings',
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons name="account-cog" color={color} size={27} />
                     ),

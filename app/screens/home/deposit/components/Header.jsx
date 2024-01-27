@@ -1,12 +1,12 @@
 //
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import { SIZES } from '../../../../constants';
 import { COLORS } from '../../../../theme';
+import { SIZES } from '../../../../constants';
 import { useNavigation } from '@react-navigation/core';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 //
-const DepositHeader = ({ depositName, depositDesc }) => {
+const Header = ({ headerName, headerDesc }) => {
     //
     const { goBack } = useNavigation();
     //
@@ -20,10 +20,10 @@ const DepositHeader = ({ depositName, depositDesc }) => {
             </Pressable>
             <View style={{ width: "70%", alignSelf: "center", rowGap: 5 }}>
                 <Text style={[SIZES.text_2xl, { textAlign: "center" }]}>
-                    {depositName}
+                    {headerName}
                 </Text>
                 <Text style={[SIZES.text_md, { textAlign: "center", fontFamily: 'poppins400', color: COLORS.font_secondary }]}>
-                    {depositDesc}
+                    {headerDesc}
                 </Text>
             </View>
         </View>
@@ -31,14 +31,11 @@ const DepositHeader = ({ depositName, depositDesc }) => {
     //
 }
 //
-export default DepositHeader;
+export default Header;
 //
 const styles = StyleSheet.create({
     container: {
-        rowGap: 1,
-        paddingHorizontal: "2%",
-        // flexDirection: "row",
-        // alignItems: "center",
+        padding: "2%",
     }
 });
 //

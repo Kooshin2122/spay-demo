@@ -16,7 +16,7 @@ export default Box;
 //
 const styles = StyleSheet.create({
     container: {
-        borderRadius: 7,
+        rowGap: 13
     }
 })
 //

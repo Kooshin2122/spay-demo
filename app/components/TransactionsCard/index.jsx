@@ -5,7 +5,7 @@ import { LAY_OUT, SIZES } from '../../constants';
 import { StyleSheet, Text, View } from 'react-native';
 import { Ionicons, Entypo } from 'react-native-vector-icons';
 //
-const TransactionsCard = ({ status = "transfer", title = "Mohamed Ali", date = "Wed 26 June 24", time = "17:23:00", money = 200 }) => {
+const TransactionsCard = ({ status = "transfer", isVisible = true, title = "Mohamed Ali", date = "Wed 26 June 24", time = "17:23:00", money = 200 }) => {
     //
     return (
         <View style={styles.container}>
@@ -34,7 +34,9 @@ const TransactionsCard = ({ status = "transfer", title = "Mohamed Ali", date = "
                     name={status == "transfer" ? "plus" : "minus"}
                 />
                 <Text style={[SIZES.text_lg, { color: status == "transfer" ? "green" : "red" }]}>
-                    ${money}
+                    {
+                        isVisible ? money : null
+                    }
                 </Text>
             </View>
         </View>
