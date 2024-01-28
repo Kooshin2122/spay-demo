@@ -2,6 +2,7 @@
 import React, { useRef } from 'react';
 import { COLORS } from '../../../theme';
 import { useNavigation } from '@react-navigation/core';
+import { MaterialCommunityIcons, AntDesign } from 'react-native-vector-icons';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image } from 'react-native';
 import { Box, GorhomBottomSheet, ListHeader, TransactionsCard } from '../../../components';
 import { send, deposit, withdrawal, bills, remittance, loan, bitcoin, needs } from '../../../assets';
@@ -23,30 +24,29 @@ const HomeScreen = () => {
                 <View style={styles.scrollCon}>
                     {/* your account  */}
                     <Box>
-                        <ListHeader
-                            title="your account"
-                            textButton="Add Account"
-                        />
                         <AccountCard />
                     </Box>
                     {/* services */}
                     <Box>
-                        <ListHeader title="What would you like to do ?" />
+                        <ListHeader title="Services" />
                         <View style={styles.servicesCon}>
                             <ServicesCard
-                                label="deposit"
+                                label="Topup"
                                 image={deposit}
                                 sheetRef={depositSheet}
+                                Icon={() => <AntDesign name="upcircle" size={55} color={COLORS.primary_color} />}
                             />
                             <ServicesCard
                                 image={send}
                                 label="Transfer"
                                 onNavigate={() => navigate('TransferMoney')}
+                                Icon={() => <MaterialCommunityIcons name="send-circle" size={65} color={COLORS.primary_color} />}
                             />
                             <ServicesCard
                                 label="Withdraw"
                                 image={withdrawal}
                                 sheetRef={withdrawSheet}
+                                Icon={() => <AntDesign name="downcircle" size={55} color={COLORS.primary_color} />}
                             />
                             <ServicesCard
                                 image={bills}
@@ -131,6 +131,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
     mainCon: {
         flex: 1,
+        rowGap: 15,
         backgroundColor: COLORS.bg_primary
     },
     container: {

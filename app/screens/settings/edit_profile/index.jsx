@@ -1,7 +1,7 @@
 //
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/core';
-import { KeyboardAvoidingView, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { KeyboardAvoidingView, Pressable, ScrollView, StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
 import { CustomBtn, ImageViewer, OutlinedTextInput } from '../../../components';
 import { SIZES } from '../../../constants';
 import { COLORS } from '../../../theme';
@@ -35,8 +35,12 @@ const EditProfileScreen = () => {
     }
     //
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             {/* Header */}
+            <StatusBar
+                barStyle="light-content"
+                backgroundColor="transparent"
+            />
             <View style={styles.header}>
                 <Pressable onPress={goBack} >
                     <Text style={[SIZES.text_base, { color: COLORS.primary_color, fontFamily: "poppins600" }]}>
@@ -117,7 +121,7 @@ const EditProfileScreen = () => {
                 </ScrollView>
             </KeyboardAvoidingView>
             {/* end */}
-        </View>
+        </SafeAreaView>
     )
     //
 }

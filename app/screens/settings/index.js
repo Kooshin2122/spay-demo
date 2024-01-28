@@ -16,7 +16,7 @@ const AccountSettingStack = () => {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="AccountSetting" component={AccountSettingScreen} />
-            <Stack.Group screenOptions={{ presentation: 'modal' }}>
+            <Stack.Group mode="modal" screenOptions={{ presentation: 'modal' }}>
                 <Stack.Screen name="EditProfile" component={EditProfileScreen} />
                 <Stack.Screen name="PaymentMethod" component={PaymentMethodScreen} />
                 <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicyScreen} />

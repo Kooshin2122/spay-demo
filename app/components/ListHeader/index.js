@@ -35,14 +35,14 @@ const styles = StyleSheet.create({
         flex: 1,
         fontSize: 14,
         letterSpacing: 0.5,
-        fontFamily: "poppins500",
-        color: COLORS.font_secondary,
+        fontFamily: "poppins600",
+        color: COLORS.font_primary,
     },
     textButton: {
         fontSize: 14,
         letterSpacing: 0.5,
         fontFamily: "poppins500",
-        color: COLORS.font_primary
+        color: COLORS.primary_color
     },
 })
 //

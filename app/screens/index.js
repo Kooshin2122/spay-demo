@@ -4,13 +4,13 @@ import { COLORS } from '../theme';
 import { Platform } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // Icons
-import { Fontisto, MaterialIcons, MaterialCommunityIcons } from 'react-native-vector-icons';
+import { Feather, MaterialIcons, MaterialCommunityIcons } from 'react-native-vector-icons';
 // screens
 import HomeStack from './home';
 import CardsStack from './Cards';
 import HistoryStack from './history';
-import ContactsStack from './Contacts';
 import AccountSettingStack from './settings';
+import QrCodeScannerScreen from './QrScanner';
 //
 const Tab = createBottomTabNavigator();
 //
@@ -38,20 +38,29 @@ const BotomTabs = () => {
                     ),
                 }}
             />
-            <Tab.Screen name="CardsStack" component={CardsStack}
-                options={{
-                    // tabBarBadge: 1,
-                    tabBarLabel: 'Cards',
-                    tabBarIcon: ({ color, size }) => (
-                        <MaterialIcons name="flight-takeoff" color={color} size={27} />
-                    ),
-                }}
-            />
             <Tab.Screen name="HistoryStack" component={HistoryStack}
                 options={{
                     tabBarLabel: 'History',
                     tabBarIcon: ({ color, size, }) => (
-                        <MaterialCommunityIcons name="ticket" color={color} size={size} />
+                        <MaterialCommunityIcons name="history" color={color} size={size} />
+                    ),
+                }}
+            />
+            <Tab.Screen name="QrCodeScanner" component={QrCodeScannerScreen}
+                options={{
+                    // tabBarBadge: 1,
+                    tabBarLabel: 'Scanner',
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialCommunityIcons name="qrcode-scan" color={color} size={30} />
+                    ),
+                }}
+            />
+            <Tab.Screen name="CardsStack" component={CardsStack}
+                options={{
+                    // tabBarBadge: 1,
+                    tabBarLabel: 'My Qr',
+                    tabBarIcon: ({ color, size }) => (
+                        <Feather name="award" color={color} size={23} />
                     ),
                 }}
             />

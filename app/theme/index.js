@@ -1,7 +1,7 @@
 //
 export const COLORS = {
     // 00BFA6 ,4de7af, 53b5b3,"#172e58"
-    primary_color: "#58a36a",
+    primary_color: "#219dd7",
     secondary_color: "#012b5b",
     tertiary_color: "#f4a819",
     gray_color: "#d9d9d9",

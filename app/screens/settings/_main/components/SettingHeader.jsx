@@ -12,24 +12,19 @@ const SettingHeader = () => {
     //
     return (
         <View
-            style={{ height: 250, backgroundColor: COLORS.primary_color }}
+            style={{ height: 250, backgroundColor: '#ffffff' }}
         >
-            <StatusBar
-                translucent
-                barStyle="light-content"
-                backgroundColor="transparent"
-            />
             <View style={[styles.container, { paddingTop: top }]}>
-                <Text style={[SIZES.text_lg, { color: "#ffffff", textAlign: "center", fontFamily: "poppins500", letterSpacing: 0.8, textTransform: "uppercase" }]}>
+                <Text style={[SIZES.text_lg, { textAlign: "center", fontFamily: "poppins500", letterSpacing: 0.8, textTransform: "uppercase" }]}>
                     My Profile
                 </Text>
                 {/* profile */}
                 <View style={styles.profileCon}>
                     <ImageViewer />
-                    <Text style={[SIZES.text_base, { color: "#ffffff" }]}>
+                    <Text style={[SIZES.text_base]}>
                         Abdirahman Abdirashid
                     </Text>
-                    <Text style={[SIZES.text_base, { color: "#ffffff" }]}>
+                    <Text style={[SIZES.text_base]}>
                         0615094596
                     </Text>
                 </View>
@@ -48,7 +43,6 @@ const styles = StyleSheet.create({
         padding: "3.5%",
         paddingBottom: "5%",
         alignItems: "center",
-        backgroundColor: "rgba(74, 110, 201, 0.46)"
     },
     profileCon: {
         rowGap: 7,

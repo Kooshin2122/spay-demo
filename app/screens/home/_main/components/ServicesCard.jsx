@@ -7,7 +7,7 @@ import { Dimensions, Image, Pressable, StyleSheet, Text, View } from 'react-nati
 //
 const { width } = Dimensions.get('screen');
 //
-const ServicesCard = ({ label, image, sheetRef, onNavigate = () => { } }) => {
+const ServicesCard = ({ label, image, sheetRef, Icon = () => { }, onNavigate = () => { } }) => {
     //
     const { navigate } = useNavigation();
     //
@@ -19,11 +19,7 @@ const ServicesCard = ({ label, image, sheetRef, onNavigate = () => { } }) => {
     return (
         <Pressable onPress={onClickService} style={styles.container}>
             <View style={styles.imageCon}>
-                <Image
-                    source={image}
-                    resizeMode="cover"
-                    style={{ width: 30, height: 30 }}
-                />
+                <Icon />
             </View>
             <Text numberOfLines={2} style={styles.label}>
                 {label}
@@ -47,11 +43,20 @@ const styles = StyleSheet.create({
         height: width / 6,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: COLORS.bg_tertiary
+        // backgroundColor: "#fff",
+        // shadowColor: "#000000",
+        // shadowOffset: {
+        //     width: 0,
+        //     height: 2,
+        // },
+        // shadowOpacity: 0.17,
+        // shadowRadius: 3.05,
+        // elevation: 4
     },
     label: {
         fontSize: 10,
         letterSpacing: 0.5,
+        textAlign: 'center',
         fontFamily: "poppins500",
         color: COLORS.secondary_color,
         textTransform: "capitalize"
