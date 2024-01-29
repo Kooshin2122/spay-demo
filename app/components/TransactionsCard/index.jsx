@@ -1,26 +1,35 @@
 //
 import React from 'react';
 import { COLORS } from '../../theme';
+import { Avatar } from 'react-native-paper';
 import { LAY_OUT, SIZES } from '../../constants';
 import { StyleSheet, Text, View } from 'react-native';
 import { Ionicons, Entypo } from 'react-native-vector-icons';
 //
-const TransactionsCard = ({ status = "transfer", isVisible = true, title = "Mohamed Ali", date = "Wed 26 June 24", time = "17:23:00", money = 200 }) => {
+const TransactionsCard = ({ receiverName, status, amount, image, date, time, isVisible = false }) => {
     //
     return (
         <View style={styles.container}>
             {/* icon container */}
-            <View style={styles.iconCon}>
-                <Ionicons
-                    size={23}
-                    name={status == "transfer" ? "trending-up-outline" : "trending-down-outline"}
-                    color={status == "transfer" ? "green" : "red"}
-                />
+            <View style={styles.avatarCon}>
+                {
+                    image ?
+                        <Avatar.Image
+                            size={50}
+                            source={{ uri: image }}
+                        /> :
+                        <Avatar.Text
+                            size={50}
+                            label={receiverName[0]}
+                            style={{ backgroundColor: COLORS.primary_color }}
+                            labelStyle={[SIZES.text_2xl, { color: '#fff' }]}
+                        />
+                }
             </View>
             {/* transaction details */}
             <View style={styles.transactionInfo}>
                 <Text style={[SIZES.text_base]}>
-                    {title}
+                    {receiverName}
                 </Text>
                 <Text style={[SIZES.text_md, { color: COLORS.font_secondary, fontFamily: "poppins400" }]}>
                     {date}, {time}
@@ -29,13 +38,13 @@ const TransactionsCard = ({ status = "transfer", isVisible = true, title = "Moha
             {/* money*/}
             <View style={[LAY_OUT.flex_row, { columnGap: 0 }]}>
                 <Entypo
-                    size={17}
-                    color={status == "transfer" ? "green" : "red"}
-                    name={status == "transfer" ? "plus" : "minus"}
+                    size={12}
+                    color={status ? "#5dad72" : "#f43f5f"}
+                    name={status ? "plus" : "minus"}
                 />
-                <Text style={[SIZES.text_lg, { color: status == "transfer" ? "green" : "red" }]}>
+                <Text style={[SIZES.text_xl, { color: status ? "#5dad72" : "#f43f5f" }]}>
                     {
-                        isVisible ? money : null
+                        isVisible ? amount : null
                     }
                 </Text>
             </View>
@@ -53,13 +62,12 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
     },
-    iconCon: {
+    avatarCon: {
         width: 50,
         height: 50,
+        borderRadius: 50 / 2,
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: 50 / 2,
-        backgroundColor: COLORS.bg_tertiary
     },
     transactionInfo: {
         flex: 1,

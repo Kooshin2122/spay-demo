@@ -20,9 +20,38 @@ const AccountCard = () => {
             source={bg}
             style={styles.container}
         >
-            {/* <View style={styles.cardCon}>
-
-                </View> */}
+            <View style={styles.cardCon}>
+                <Text style={[SIZES.text_base, { fontFamily: 'poppins400', color: COLORS.gray_color }]}>
+                    Your Balance
+                </Text>
+                <View style={[LAY_OUT.flex_row, { justifyContent: 'space-between' }]}>
+                    <Pressable onPress={showBalance} style={[LAY_OUT.flex_row, { columnGap: 10 }]}>
+                        <Text style={[SIZES.text_xl, { color: COLORS.bg_tertiary }]}>
+                            $ {eyeToggle ? "12,417.98" : "***.***"}
+                        </Text>
+                        <MaterialCommunityIcons
+                            size={23}
+                            color={COLORS.bg_tertiary}
+                            name={eyeToggle ? "eye-outline" : "eye-off-outline"}
+                        />
+                    </Pressable>
+                    <View>
+                        <Text style={[SIZES.text_base, { color: COLORS.gray_color, textAlign: 'right', fontFamily: 'poppins400' }]}>
+                            Account no
+                        </Text>
+                        <Pressable onPress={showBalance} style={[LAY_OUT.flex_row, { columnGap: 4 }]}>
+                            <Text style={[SIZES.text_base, { color: COLORS.bg_tertiary }]}>
+                                2303040002
+                            </Text>
+                            <MaterialCommunityIcons
+                                size={20}
+                                name={"content-copy"}
+                                color={COLORS.bg_tertiary}
+                            />
+                        </Pressable>
+                    </View>
+                </View>
+            </View>
         </ImageBackground>
     );
     //
@@ -34,7 +63,6 @@ const styles = StyleSheet.create({
     container: {
         height: 110,
         width: "100%",
-        borderRadius: 1,
         backgroundColor: "#fff",
         shadowColor: "#000000",
         shadowOffset: {
@@ -44,15 +72,13 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.17,
         shadowRadius: 3.05,
         elevation: 1
-
-
     },
     cardCon: {
         padding: "3%",
         width: "100%",
         height: "100%",
         justifyContent: "space-between",
-        backgroundColor: 'rgba(7, 120, 60, 0.39)'
+        backgroundColor: 'rgba(42, 45, 50, 0.15)'
     },
     section1: {
         flexDirection: "row",

@@ -1,32 +1,28 @@
 //
 import React from 'react';
-import { AntDesign } from 'react-native-vector-icons';
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { COLORS } from '../../../../theme';
+import { Avatar } from 'react-native-paper';
+import { SIZES } from '../../../../constants';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
 //
 const { width, height } = Dimensions.get('screen');
 //
-const SendAgainCard = ({ isProfile = false, image = "https://images.unsplash.com/photo-1483909796554-bb0051ab60ad?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2lybCUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D" }) => {
+const SendAgainCard = ({ image, receiverName = [] }) => {
     //
     return (
         <View style={styles.container}>
             {
-                isProfile ?
-                    <View style={styles.imageCon}>
-                        <Image
-                            resizeMode="cover"
-                            source={{ uri: image }}
-                            style={{ width: "100%", height: "100%", borderRadius: 10, }}
-                        />
-                    </View>
-                    :
-                    <View style={styles.iconCon}>
-                        <AntDesign
-                            size={23}
-                            name="plus"
-                            color={COLORS.tertiary_color}
-                        />
-                    </View>
+                image ?
+                    <Avatar.Image
+                        size={50}
+                        source={{ uri: image }}
+                    /> :
+                    <Avatar.Text
+                        size={50}
+                        label={receiverName[0]}
+                        style={{ backgroundColor: COLORS.primary_color }}
+                        labelStyle={[SIZES.text_2xl, { color: '#fff' }]}
+                    />
             }
         </View>
     );
@@ -37,20 +33,6 @@ export default SendAgainCard;
 //
 const styles = StyleSheet.create({
     container: {
-        width: 65,
-        height: 65,
-        borderRadius: 10,
-        backgroundColor: '#f4e4cd'
-    },
-    iconCon: {
-        width: "100%",
-        height: "100%",
-        alignItems: "center",
-        justifyContent: "center"
-    },
-    imageCon: {
-        width: "100%",
-        height: "100%",
     }
 });
 //

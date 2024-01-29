@@ -3,10 +3,11 @@ import React, { useRef } from 'react';
 import { COLORS } from '../../../theme';
 import { useNavigation } from '@react-navigation/core';
 import { MaterialCommunityIcons, AntDesign } from 'react-native-vector-icons';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image, FlatList } from 'react-native';
 import { Box, GorhomBottomSheet, ListHeader, TransactionsCard } from '../../../components';
 import { send, deposit, withdrawal, bills, remittance, loan, bitcoin, needs } from '../../../assets';
 import { AccountCard, DepositSheet, HomeHeader, ImageCarousel, SendAgainCard, SendMoneySheet, ServicesCard, WithdrawSheet } from './components';
+import { transactions } from '../../../data';
 //
 const HomeScreen = () => {
     //
@@ -64,28 +65,14 @@ const HomeScreen = () => {
                             title="Send again"
                             textButton="see more"
                         />
-                        <ScrollView
+                        <FlatList
                             horizontal
+                            data={transactions}
+                            keyExtractor={item => item.id}
                             showsHorizontalScrollIndicator={false}
                             contentContainerStyle={styles.sendAgainCardCon}
-                        >
-                            <SendAgainCard />
-                            <SendAgainCard
-                                isProfile
-                            />
-                            <SendAgainCard
-                                isProfile
-                                image="https://i.pinimg.com/474x/2e/2f/ac/2e2fac9d4a392456e511345021592dd2.jpg"
-                            />
-                            <SendAgainCard
-                                isProfile
-                                image="https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8"
-                            />
-                            <SendAgainCard
-                                isProfile
-                                image="https://i.pinimg.com/736x/46/d6/38/46d638b0018a29d734eac03973536c68.jpg"
-                            />
-                        </ScrollView>
+                            renderItem={({ item }) => <SendAgainCard {...item} />}
+                        />
                     </Box>
                     {/* recent transactions */}
                     <Box>
@@ -93,18 +80,14 @@ const HomeScreen = () => {
                             title="Recent transactions"
                             textButton="see more"
                         />
-                        <TransactionsCard />
-                        <TransactionsCard
-                            status="income"
+                        <FlatList
+                            data={transactions}
+                            scrollEnabled={false}
+                            keyExtractor={item => item.id}
+                            contentContainerStyle={styles.transactionsCardCon}
+                            renderItem={({ item }) => <TransactionsCard isVisible={true} {...item} />}
                         />
-                        <TransactionsCard />
-                        <TransactionsCard
-                            status="income"
-                        />
-                        <TransactionsCard />
-                        <TransactionsCard
-                            status="income"
-                        />
+
                     </Box>
                 </View>
                 {/* end */}
@@ -131,7 +114,6 @@ export default HomeScreen;
 const styles = StyleSheet.create({
     mainCon: {
         flex: 1,
-        rowGap: 15,
         backgroundColor: COLORS.bg_primary
     },
     container: {
@@ -142,6 +124,7 @@ const styles = StyleSheet.create({
     scrollCon: {
         flex: 1,
         rowGap: 18,
+        paddingTop: '2%',
         paddingBottom: "5%",
         paddingHorizontal: '2.5%',
     },
@@ -149,10 +132,9 @@ const styles = StyleSheet.create({
         flexWrap: "wrap",
         flexDirection: "row",
         alignItems: "flex-start",
-        justifyContent: "space-around"
+        justifyContent: 'space-between'
     },
     sendAgainCardCon: {
-        flex: 1,
         columnGap: 10
     },
     transactionsCardCon: {

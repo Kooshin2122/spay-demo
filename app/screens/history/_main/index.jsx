@@ -5,7 +5,8 @@ import { LAY_OUT, SIZES } from '../../../constants';
 import { BalanceCard, StatusCard } from './components';
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
 import { Box, ListHeader, TransactionsCard } from '../../../components';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, FlatList } from 'react-native';
+import { transactions } from '../../../data';
 //
 const HistoryScreen = () => {
     //
@@ -45,24 +46,12 @@ const HistoryScreen = () => {
                             title="Transactions"
                             Element={() => <MaterialCommunityIcons name={eyeToggle ? 'eye-outline' : 'eye-off-outline'} size={23} color={COLORS.font_primary} onPress={() => setEyeToggle(prev => !prev)} />}
                         />
-                        <TransactionsCard
-                            isVisible={eyeToggle}
-                        />
-                        <TransactionsCard
-                            status="income"
-                            isVisible={eyeToggle}
-                        />
-                        <TransactionsCard
-                            isVisible={eyeToggle} />
-                        <TransactionsCard
-                            status="income"
-                            isVisible={eyeToggle}
-                        />
-                        <TransactionsCard
-                            isVisible={eyeToggle} />
-                        <TransactionsCard
-                            status="income"
-                            isVisible={eyeToggle}
+                        <FlatList
+                            data={transactions}
+                            scrollEnabled={false}
+                            keyExtractor={item => item.id}
+                            contentContainerStyle={styles.transactionsCardCon}
+                            renderItem={({ item }) => <TransactionsCard isVisible={eyeToggle} {...item} />}
                         />
                     </Box>
                 </View>
@@ -83,6 +72,9 @@ const styles = StyleSheet.create({
         padding: '3%',
         borderBottomWidth: 0.7,
         borderColor: COLORS.gray_color,
+    },
+    transactionsCardCon: {
+        rowGap: 15
     },
     scrollCon: {
         rowGap: 15,
